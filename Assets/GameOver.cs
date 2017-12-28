@@ -4,7 +4,7 @@ using UnityEngine;
 //A biblioteca abaixo foi incluida para usar o GetActiveScene e o LoadScene;
 //using UnityEngine.SceneManagement;
 
-public class LoadNaColisao : MonoBehaviour {
+public class GameOver : MonoBehaviour {
 
     //criando objeto s da classe Scene
     //Scene s;
@@ -29,10 +29,6 @@ public class LoadNaColisao : MonoBehaviour {
     ///}
     /// </summary>
 
-private void Update()
-    {
-         
-    }
 
     private void OnCollisionEnter2D()
     {

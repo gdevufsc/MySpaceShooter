@@ -13,6 +13,12 @@ public class Restart : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKey(KeyCode.R))
+        {
             SceneManager.LoadScene(s.buildIndex);
+        }
+        else if (Input.GetKey(KeyCode.M))
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 }
