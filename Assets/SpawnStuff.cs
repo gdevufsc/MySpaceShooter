@@ -9,8 +9,11 @@ public class SpawnStuff : MonoBehaviour {
     //ob armazena os objetozinhos clonados
     GameObject ob;
 
-    //t é o tempo entre spawns
+    //t é o tempo entre spawns e o tempo para começar a invocar
     float t;
+
+    //ts é o tempo até começar a invocar
+    float ts;
 
     //min e max são os limites da tela
     float min, max;
@@ -30,19 +33,37 @@ public class SpawnStuff : MonoBehaviour {
         ///print(O[2]);
         ///print(O[3]);
 
-        t = 2f; 
+        t = 2f;
 
         min = -3.5f;
         max = 3.5f;
 
         y = transform.position.y;
 
-        v = new Vector2(0, -3);
+        v = new Vector2(x: 0, y: -3);
 
-        InvokeRepeating("SpawnFunction", 2f, t);        
+        //InvokeRepeating("SpawnFunction", t, t);
+        InvoqueRepetindo(t);
     }
-	
-    void SpawnFunction ()
+
+    public void InvoqueRepetindo (float t)
+    {
+        InvokeRepeating("SpawnFunction", t, t);
+    }
+
+    public void AumentaDificuldade()
+    {
+        t /= 1.1f;
+        CancelInvoke();
+        InvoqueRepetindo(t);
+    }
+
+    public void ReduzTempo()
+    {
+        t /= 1.5f;
+    }
+
+    public void SpawnFunction ()
     {
 
         //define x aleatoriamente
@@ -54,7 +75,7 @@ public class SpawnStuff : MonoBehaviour {
         //i identificará qual elemento do vetor será instanciado. É definido aleatoriamente
         int i = Random.Range(0, 3);
 
-        //instancia objeto do vetor e armazena em ab, com posição p e rotação zerada
+        //instancia objeto do vetor e armazena em ob, com posição p e rotação zerada
         ob = Instantiate(O[i], p, Quaternion.Euler(Vector3.zero));
 
         //atribui velocidade v ao objeto ob instanciado
