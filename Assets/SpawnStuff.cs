@@ -53,14 +53,10 @@ public class SpawnStuff : MonoBehaviour {
 
     public void AumentaDificuldade()
     {
-        t /= 1.1f;
+        t *= .9f;
+        v *= 1.1f;
         CancelInvoke();
         InvoqueRepetindo(t);
-    }
-
-    public void ReduzTempo()
-    {
-        t /= 1.5f;
     }
 
     public void SpawnFunction ()

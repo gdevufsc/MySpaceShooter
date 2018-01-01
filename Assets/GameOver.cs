@@ -6,17 +6,12 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour {
 
-    //criando objeto s da classe Scene
-    //Scene s;
 
     //pGOT é uma abreviação de positionGameOverText.
     Vector2 pGOT;
 
     private void Start()
     {
-        //instanciando s, colocando nele a cena atual
-        //s = SceneManager.GetActiveScene();
-
         //pGOT é relativo ao pai, que será o Canvas. .5f,.5f vai representar o meio da tela.
         pGOT = new Vector2(.5f, .5f);
     }
@@ -32,15 +27,17 @@ public class GameOver : MonoBehaviour {
 
     private void OnCollisionEnter2D()
     {
-        //SceneManager.LoadScene(s.buildIndex);
         MakeGameOverText();
         DestroiCoisas();
-        //PleaseStopInvoking = true;
     }
 
     void DestroiCoisas()
     {
-        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        GameObject e = Instantiate(Resources.Load("goe") as GameObject, transform.position, Quaternion.Euler(Vector3.zero));
+        Destroy(e.gameObject, 1f);
+        GameObject k = GameObject.FindGameObjectWithTag("ss");
+        k.GetComponent<AudioSource>().PlayOneShot(Resources.Load("ex") as AudioClip, 1);
+        Destroy(this.gameObject);
     }
     
     void MakeGameOverText()

@@ -14,7 +14,7 @@ public class Tiro : MonoBehaviour {
 	void Start () {
         v = 10f;
         //encontrando objeto e colocando em t
-        t = GameObject.FindWithTag("tiroTag"); 
+        t = Resources.Load("Tirinho") as GameObject;
 	}
 	
 	void Update () {
